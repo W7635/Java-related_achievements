@@ -1,0 +1,18 @@
+上传后的代码删除了Warehouse.java中的数据库地址，用户名以及密码，需要连接上本地的数据库才能正常使用。相关数据库创建代码如下：
+1.users:
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `username` varchar(50) NOT NULL,
+  `avatar_path` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+2.inventory:
+CREATE TABLE `inventory` (
+  `item_name` varchar(255) NOT NULL,
+  `quantity` int NOT NULL,
+  `type` varchar(45) NOT NULL,
+  PRIMARY KEY (`item_name`,`type`),
+  UNIQUE KEY `unique_item_type` (`item_name`,`type`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
